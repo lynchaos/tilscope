@@ -39,6 +39,20 @@ pip install -e ".[sc]"          # adds anndata/scanpy + Leiden clustering
 tilscope run --input my_tme.h5ad --out report.html
 ```
 
+### On the Tirosh 2016 melanoma dataset (public benchmark)
+
+The [Tirosh et al. 2016](https://doi.org/10.1126/science.aad0501) melanoma dataset
+(GEO: [GSE72056](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE72056))
+contains 4,645 single cells from 19 metastatic tumours — malignant cells, T cells,
+B cells, NK cells, macrophages, CAFs, and endothelial cells — making it an ideal
+real-data benchmark for tilscope.
+
+```bash
+pip install -e ".[sc]"
+python scripts/download_tirosh2016.py   # downloads ~72 MB, saves data/tirosh2016_melanoma.h5ad
+tilscope run --input data/tirosh2016_melanoma.h5ad --out report_real.html
+```
+
 ---
 
 ## What it does

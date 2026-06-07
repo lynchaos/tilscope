@@ -1,0 +1,5 @@
+# Downloaded datasets — do not commit large binary files
+*.h5ad
+*.loom
+*.gz
+*.zip
