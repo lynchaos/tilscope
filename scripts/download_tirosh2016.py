@@ -63,8 +63,9 @@ def _progress(block: int, block_size: int, total: int) -> None:
     done = block * block_size
     if total > 0:
         pct = min(100, done * 100 // total)
-        mb = done / 1e6
-        print(f"\r  {pct:3d}%  {mb:.1f} MB", end="", flush=True)
+        if block == 1 or pct % 5 == 0:
+            mb = done / 1e6
+            print(f"\r  {pct:3d}%  {mb:.1f} MB", end="", flush=True)
 
 
 def build_anndata(gz_path: pathlib.Path):
@@ -94,9 +95,9 @@ def build_anndata(gz_path: pathlib.Path):
         meta.loc["malignant(1=no,2=yes,0=unresolved)"].values, errors="coerce"
     ).astype(float)
     nmtype_code = pd.to_numeric(
-        meta.loc["non-malignant cell type (1=T,2=B,3=Macro.4=Endo.,5=CAF;6=NK)"].values,
+        meta.loc["non-malignant cell type (1=T,2=B,3=Macro.4=Endo.,5=CAF;6=NK)"],
         errors="coerce",
-    ).fillna(0).astype(int)
+    ).fillna(0).astype(int).values
 
     cell_type = []
     for mal, nm in zip(malignant_code, nmtype_code):
