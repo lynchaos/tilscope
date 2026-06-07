@@ -1,0 +1,44 @@
+{
+  "note": "Synthetic demonstration data, not a real patient sample.",
+  "qc": {
+    "n_cells_input": 2000,
+    "n_cells_pass": 1887,
+    "n_cells_fail": 113,
+    "pct_fail": 5.65,
+    "median_genes_per_cell": 56.0,
+    "median_counts_per_cell": 115.0,
+    "median_pct_mito": 3.45
+  },
+  "qc_thresholds": {
+    "min_genes": 20.7,
+    "max_pct_mito": 11.33
+  },
+  "clustering": {
+    "clustering_method": "kmeans(k=8)",
+    "silhouette": 0.149,
+    "adjusted_rand_index": 0.964
+  },
+  "composition_pct": {
+    "CD8 T (effector)": 18.8,
+    "Myeloid": 16.3,
+    "CD4 T (helper)": 15.1,
+    "CD8 T (exhausted)": 13.8,
+    "Tumour": 13.5,
+    "NK": 8.5,
+    "B": 7.3,
+    "Treg": 6.7
+  },
+  "exhaustion": {
+    "cd8_high_exhaustion_fraction": 0.698,
+    "exhaustion_threshold_z": 0.015,
+    "mean_cd8_exhaustion": 0.631
+  },
+  "parameters": {
+    "seed": 0,
+    "n_hvg": 80,
+    "n_pcs": 30,
+    "target_sum": 10000.0
+  },
+  "narrative": "This is a synthetic demonstration of a tumour-microenvironment single-cell analysis and does not describe a real sample. After automated QC, 1887 of 2000 cells passed (5.65% removed for low complexity or elevated mitochondrial content), leaving a median of 56 genes per cell.\n\nUnsupervised clustering (kmeans(k=8)) resolved the infiltrate into interpretable populations: CD8 T (effector) 18.8%; Myeloid 16.3%; CD4 T (helper) 15.1%; CD8 T (exhausted) 13.8%; Tumour 13.5%; NK 8.5%; B 7.3%; Treg 6.7%. Recovered clusters agree well with the underlying populations (adjusted Rand index 0.964). The CD8+ T-cell compartment makes up roughly 32.6% of recovered cells.\n\nWithin that compartment, 70% of CD8+ T cells score high for a canonical exhaustion programme (PD-1, LAG-3, TIM-3, TIGIT, TOX), with a mean exhaustion z-score of 0.631. A substantial exhausted fraction alongside a measurable regulatory (Treg) presence is the kind of immunosuppressive signature that can blunt T-cell-engager activity. Testable follow-ups would be to (i) confirm co-expression of inhibitory receptors at single-cell resolution and (ii) ask whether checkpoint co-targeting shifts the effector-to-exhausted CD8 ratio.",
+  "narrative_source": "template"
+}
